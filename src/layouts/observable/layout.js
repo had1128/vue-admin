@@ -32,7 +32,7 @@ export const layout = Vue.observable({
   // 头部的高度
   headerHeight: 64,
   // 菜单收起的动画和时间
-  layoutTransition: 'all 0.2s'
+  layoutTransition: 'all 0.1s'
 })
 
 let layoutStr = localStorage.getItem('layout')

@@ -37,23 +37,17 @@
             <div style="padding:40px" class="login1">
               <v-logo color="#333" />
               <a-form :form="form">
-                <!--  label='账号'  -->
                 <a-form-item
                   :labelCol="formItemLayout.labelCol"
-                  :wrapperCol="formItemLayout.wrapperCol"
-                  v-decorator="['username',{rules: [{ required: true, message: '请输入邮箱地址'}],initialValue:username}]"
-                >
-                  <a-input placeholder="请输入邮箱地址" size="large">
+                  :wrapperCol="formItemLayout.wrapperCol" >
+                  <a-input  v-decorator="['username',{rules: [{ required: true, message: '请输入用户名'}],initialValue:username}]" placeholder="请输入用户名" size="large">
                     <a-icon slot="prefix" type="user"  />
                   </a-input>
                 </a-form-item>
-                <!--  label='密码' -->
                 <a-form-item
                   :labelCol="formItemLayout.labelCol"
-                  :wrapperCol="formItemLayout.wrapperCol"
-                  v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }],initialValue:password}]"
-                >
-                  <a-input placeholder="请输入密码" size="large" type="password">
+                  :wrapperCol="formItemLayout.wrapperCol" >
+                  <a-input   v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }],initialValue:password}]" placeholder="请输入密码" size="large" type="password">
                     <a-icon slot="prefix" type="lock"  />
                   </a-input>
                 </a-form-item>
@@ -73,14 +67,14 @@
                 size="large"
                 :loading="loading"
               >登录</a-button>
-              <a
-                @click="toRegister"
-              >还没有账号？立即注册</a>
+<!--              <a-->
+<!--                @click="toRegister"-->
+<!--              >还没有账号？立即注册</a>-->
 
-              <a href class="fr">忘记密码</a>
-              <div style="padding-top:50px">
-                为了您的流畅体验和避免广告骚扰，我们推荐您使用chrome浏览器，<a href="">点击下载</a>
-              </div>
+<!--              <a href class="fr">忘记密码</a>-->
+<!--              <div style="padding-top:50px">-->
+<!--                为了您的流畅体验和避免广告骚扰，我们推荐您使用chrome浏览器，<a href="">点击下载</a>-->
+<!--              </div>-->
             </div>
           </a-spin>
       </div>
@@ -93,6 +87,7 @@
 import uuid from 'uuid'
 import md5 from 'md5'
 import { layout } from '@layouts'
+import { mapActions, mapGetters, mapState } from 'vuex'
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 24 }
@@ -105,35 +100,33 @@ export default {
       formItemLayout,
       centerDialogVisible: true,
       loading: false,
-      username: 'admin',
+      username: '',
       password: '',
       captcha: '',
       captchPath: '',
       uuid: '',
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this, { name: 'loginForm' })
     }
   },
   computed: {
-    menu () {
-      return this.$store.state.sys.menu
-    }
+    ...mapGetters('auth', ['userInfo', 'isAuthenticated'])
   },
   mounted () {
     this._animateBg()
-    this.getCaptch()
   },
   methods: {
-    toRegister () {
-      this.$router.push('/register')
-    },
-    handleConfirmPassword (rule, value, callback) {
-      const { getFieldValue } = this.form
-      if (value && value !== getFieldValue('password')) {
-        callback('两次输入不一致！')
-      }
-      // Note: 必须总是返回一个 callback，否则 validateFieldsAndScroll 无法响应
-      callback()
-    },
+    ...mapActions('auth', ['login', 'loginout']),
+    // toRegister () {
+    //   this.$router.push('/register')
+    // },
+    // handleConfirmPassword (rule, value, callback) {
+    //   const { getFieldValue } = this.form
+    //   if (value && value !== getFieldValue('password')) {
+    //     callback('两次输入不一致！')
+    //   }
+    //   // Note: 必须总是返回一个 callback，否则 validateFieldsAndScroll 无法响应
+    //   callback()
+    // },
     toLogin () {
       this.registerDialogVisible = false
       this.centerDialogVisible = true
@@ -145,15 +138,16 @@ export default {
           this.loading = true
           let { password } = vals
           this.$store.commit('sys/savePassword', md5(password))
-          this.$store
-            .dispatch('auth/login', { ...vals, uuid: this.uuid })
+          this.login({ code: vals.username, pwd: vals.password })
             .then(res => {
-              this.getCaptch()
               this.loading = false
+              this.$router.push('/')
             })
-            .catch(() => {
-              this.getCaptch()
+            .catch((res) => {
               this.loading = false
+              if(res.code == 201){
+                this.$message.error(res.msg)
+              }
             })
         }
       })

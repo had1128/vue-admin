@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["chunk-2d0c7ad3"],{5244:function(a,n,o){a.exports=o.p+"static/fonts/ArtielySans-Medium.5aba1aa2.woff2"}}]);

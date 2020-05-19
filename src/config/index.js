@@ -15,7 +15,7 @@ let BASE_URL = ''
 switch (MODE) {
   case 'dev':
     // 开发模式一般为空
-    BASE_URL = 'api/'
+    BASE_URL = 'http://localhost:10523/api/'
     break
   case 'test':
     // 本地测试模式
@@ -37,18 +37,18 @@ export default {
     retryDelay: 1000, // 失败重试延时
     shouldRetry: () => true, // 失败重试条件，默认只要是错误都需要重试
     url: BASE_URL,
-    timeout: 1000,
+    timeout: 5000,
     //   设置请求头
     header: {
       'Cache-Control': 'no-cache',
-      'Content-type': 'application/x-www-form-urlencoded'
+      'Content-type': 'application/json'
     },
     // 自定义一些配置(包括修改请求头等)
     set_config: config => {
-      config.data = qs.stringify(config.data, {
-        arrayFormat: 'indices',
-        allowDots: true
-      })
+      // config.data = qs.stringify(config.data, {
+      //   arrayFormat: 'indices',
+      //   allowDots: true
+      // })
       return config
     },
     //   请求错误自定义

@@ -1,6 +1,7 @@
 // initial state
 const state = {
-  menu: []
+  menu: [],
+  password: null
 }
 
 // getters
@@ -11,6 +12,9 @@ const getters = {
 const mutations = {
   setMenu (state, payload) {
     state.menu = payload
+  },
+  savePassword(state, payload){
+    state.password = payload
   }
 }
 

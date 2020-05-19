@@ -27,9 +27,9 @@ export default function fetch (options, argu) {
   let headers = Object.assign(
     {
       'Cache-Control': 'no-cache',
-      'Content-type': 'application/x-www-form-urlencoded'
+      'Content-type': 'application/json'
     },
-    configs.api.headers
+    configs.api.header
   )
   let timeout = configs.api.timeout || 10000
   const instance = axios.create({
@@ -80,11 +80,9 @@ export default function fetch (options, argu) {
           requestMap.set(keyString, cancel)
         }
       })
-
       Object.assign(config, { _keyString: keyString })
-
       let cusConfig = configs.api.set_config(config)
-
+      console.log({...config, ...cusConfig })
       return { ...config, ...cusConfig }
     },
     error => {

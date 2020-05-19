@@ -32,10 +32,10 @@ export default function errorHandler (error) {
         message: '这是请求错误提示，只会出现在测试环境',
         duration: 0,
         description: h => (
-          <div style="width:6rem;padding:.2rem;word-break: break-all">
-            出错的url<p>{url}</p>参数<p>{params}</p>请求状态码<p>{code}</p>
-            业务状态码<p>{status}</p>
-          </div>
+          '<div style="width:6rem;padding:.2rem;word-break: break-all">' +
+           '出错的url<p>{url}</p>参数<p>{params}</p>请求状态码<p>{code}</p>' +
+            '业务状态码<p>{status}</p>' +
+          '</div>'
         ),
         onClick: () => {}
       })

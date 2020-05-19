@@ -44,9 +44,9 @@ export default {
     document.addEventListener('visibilitychange', () => {
     // 浏览器切换事件
       if (document.visibilityState === 'hidden') {
-        document.title = 'Artiely（冻结）'
+        document.title = '预约系统（冻结）'
       } else {
-        document.title = 'Artiely'
+        document.title = '预约系统'
         layout.appReload = false
         this.$nextTick(() => {
           layout.appReload = true

@@ -1,20 +1,20 @@
 <template>
   <div class="fr header-right">
-    <v-button tip="点击新增一个订单" class="hidden-xs-only">
-      <a-icon type="search" />
-    </v-button>
-    <v-button tip="查看今日订单" class="hidden-xs-only">
-      <a-iconfont type="icon-commodity" />
-    </v-button>
-    <v-button tip="查看今日营业额" class="hidden-xs-only">
-      <a-iconfont type="icon-financial_fill" />
-    </v-button>
-    <v-button tip="预约消息">
-      <a-iconfont type="icon-wangwang" />
-    </v-button>
-    <v-button tip="代办事项" class="hidden-xs-only">
-      <a-iconfont type="icon-time" />
-    </v-button>
+<!--    <v-button tip="点击新增一个订单" class="hidden-xs-only">-->
+<!--      <a-icon type="search" />-->
+<!--    </v-button>-->
+<!--    <v-button tip="查看今日订单" class="hidden-xs-only">-->
+<!--      <a-iconfont type="icon-commodity" />-->
+<!--    </v-button>-->
+<!--    <v-button tip="查看今日营业额" class="hidden-xs-only">-->
+<!--      <a-iconfont type="icon-financial_fill" />-->
+<!--    </v-button>-->
+<!--    <v-button tip="预约消息">-->
+<!--      <a-iconfont type="icon-wangwang" />-->
+<!--    </v-button>-->
+<!--    <v-button tip="代办事项" class="hidden-xs-only">-->
+<!--      <a-iconfont type="icon-time" />-->
+<!--    </v-button>-->
     <v-button :tip="screen?'退出全屏':'全屏'" class="hidden-xs-only" @click="toggleScreen">
       <a-iconfont :type="screen?'icon-smallscreen':'icon-send'" />
     </v-button>
@@ -24,31 +24,31 @@
     <a-divider type="vertical" />
     <a-dropdown>
       <a class="ant-dropdown-link" href="#">
-        <a-badge :count="99">
+        <a-badge :count="0">
           <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        </a-badge>Artiely
+        </a-badge>admin
         <a-icon type="down" />
       </a>
       <a-menu slot="overlay">
-        <a-menu-item key="-1">
-          <a rel="noopener noreferrer" @click="$router.push('/userinfo')" href="javascript:;">个人中心</a>
-        </a-menu-item>
-        <a-menu-item key="0">
-          <a rel="noopener noreferrer" href="javascript:;" @click="$router.push('/todo')">代办事项</a>
-        </a-menu-item>
-        <a-menu-item key="1">
-          <a
-            rel="noopener noreferrer"
-            href="javascript:;"
-            @click="$router.push('/handler-over')"
-          >交班下班</a>
-        </a-menu-item>
-        <a-menu-divider />
+<!--        <a-menu-item key="-1">-->
+<!--          <a rel="noopener noreferrer" @click="$router.push('/userinfo')" href="javascript:;">个人中心</a>-->
+<!--        </a-menu-item>-->
+<!--        <a-menu-item key="0">-->
+<!--          <a rel="noopener noreferrer" href="javascript:;" @click="$router.push('/todo')">代办事项</a>-->
+<!--        </a-menu-item>-->
+<!--        <a-menu-item key="1">-->
+<!--          <a-->
+<!--            rel="noopener noreferrer"-->
+<!--            href="javascript:;"-->
+<!--            @click="$router.push('/handler-over')"-->
+<!--          >交班下班</a>-->
+<!--        </a-menu-item>-->
+<!--        <a-menu-divider />-->
         <a-menu-item key="2">
           <a rel="noopener noreferrer" href="javascript:;" @click="$router.replace('/login')">退出登录</a>
         </a-menu-item>
-        <a-menu-divider />
-        <a-menu-item key="3" disabled>切换店铺</a-menu-item>
+<!--        <a-menu-divider />-->
+<!--        <a-menu-item key="3" disabled>切换店铺</a-menu-item>-->
       </a-menu>
     </a-dropdown>
     <a-divider type="vertical" />

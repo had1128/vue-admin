@@ -11,6 +11,26 @@ export default [
     }
   },
   {
+    path: '/login',
+    name: 'login',
+    component: loader('views/auth/login.vue'),
+    meta: {
+      title: '登录页',
+      icon: 'icon-addressbook',
+      hide: true
+    }
+  },
+  {
+    path: '/login2',
+    name: 'login2',
+    component: loader('views/auth/login2.vue'),
+    meta: {
+      title: '登录页2',
+      icon: 'icon-addressbook',
+      hide: true
+    }
+  },
+  {
     path: '/sys-error',
     name: 'sys-error',
     component: App,

@@ -15,7 +15,12 @@ function initApi (argu) {
     obj[v] = params => {
       let oldData = apiList[v].defaultData || {}
       let newParams = params || {}
-      apiList[v].data = { ...oldData, ...newParams }
+      if (apiList[v].method.toLowerCase() === 'get') {
+        apiList[v].params = { ...oldData, ...newParams }
+        apiList[v].data = {}
+      } else {
+        apiList[v].data = { ...oldData, ...newParams }
+      }
       return fetch(apiList[v], argu)
     }
   })

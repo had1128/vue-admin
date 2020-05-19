@@ -1,29 +1,45 @@
 export const USERINFO = {
-  url: 'userinfo',
-  method: 'get',
-  __remark: '用户信息'
+  url: 'http://59.79.116.4/report/report/selectByCode',
+  method: 'post',
+  remark: '获取用户信息',
+  defaultData: {
+    code: ''
+  }
 }
-export const ORDER_LIST = {
-  url: 'order',
+
+
+export const LOGIN = {
+  url: 'login/loginin',
   method: 'get',
-  __remark: '订单列表信息'
+  remark: '获取用户信息',
+  defaultData: {
+    xgh: '',
+    xm: '',
+    bm: '',
+    bmbm: '',
+    cardNo: '',
+    studentclass: '',
+    type: '',
+    openId: ''
+  }
 }
-export const USER_LIST = {
-  url: 'userlist',
-  method: 'get',
-  __remark: '用户列表信息'
+
+export const SSOLOGIN = {
+  url: 'http://59.79.116.4/report/report/ssoCheckUser',
+  method: 'post',
+  remark: '登录',
+  // 默认参数
+  defaultData: {
+    code: '',
+    pwd: ''
+  }
 }
-// export const LOGIN = {
-//   url: 'login',
-//   method: 'post',
-//   __remark: '登录',
-//   // 默认参数
-//   __argus: {
-//     code: '',
-//     username: '',
-//     password: ''
-//   }
-// }
+
+export const LOGOUT = {
+  url: 'logout',
+  method: 'post',
+  remark: '登出'
+}
 
 // export const LOGIN_EXP = {
 //   url: 'login/experience',
@@ -35,12 +51,6 @@ export const USER_LIST = {
 //   url: 'login/st/app/menus',
 //   method: 'post',
 //   remark: '当前角色移动端菜单'
-// }
-
-// export const LOGOUT = {
-//   url: 'logout',
-//   method: 'post',
-//   remark: '登出'
 // }
 
 // export const PASSWORD_FORGET = {
